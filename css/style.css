@@ -1,0 +1,27 @@
+body{
+    margin: 0;
+    display: grid;
+    background-color: beige;
+
+    height: 100vh;
+    place-items: center;
+}
+
+#container{
+    background-color: aquamarine;
+    height: 40vh;
+    width: 30vh;
+
+    display: grid;
+    grid-template-columns: 1fr, 1fr, 1fr, 1fr;
+    grid-template-rows: 1fr, 1fr, 1fr, 1fr, 1fr, 1fr, 1fr;
+
+}
+
+h1 {
+    color: green;
+}
+
+h2 {
+    color: red;
+}

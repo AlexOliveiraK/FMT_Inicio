@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css"/>
+
+    <title>Document</title>
+</head>
+<body>
+    <section id="container">
+        <h1>Calculadora</h1>
+        <input type="text" id="tela"/>
+        <div id="operador"></div>
+        <form>
+            <input type="button" value="8" onclick="numero(8)"/>
+            <input type="button" value="7" onclick="numero(7)"/>
+            <input type="button" value="9" onclick="numero(9)"/> </br>
+            <input type="button" value="4" onclick="numero(4)"/>
+            <input type="button" value="5" onclick="numero(5)"/>
+            <input type="button" value="6" onclick="numero(6)"/> </br>
+            <input type="button" value="3" onclick="numero(3)"/>
+            <input type="button" value="2" onclick="numero(2)"/>
+            <input type="button" value="1" onclick="numero(1)"/> </br>
+            <input type="button" value="0" onclick="numero(0)"/>
+
+            </br></br>
+            <input type="button" value="+" onclick="operacao('+')"/>
+            <input type="button" value="-" onclick="operacao('-')"/>
+            <input type="button" value="*" onclick="operacao('*')"/>
+            <input type="button" value="/" onclick="operacao('/')"/>
+
+            </br></br>
+            <input type="button" value="=" onclick="calcular()"/>
+            <input type="button" value="C" onclick="limpar()"/>
+        </form>
+    </section>
+    <script>
+
+        let numero1 = 0
+        let numero2 = 0
+        let sinalOperacao = ""
+
+        function numero(v) {
+            let tela = document.getElementById("tela")
+            if(tela.value == 0){
+                tela.value = v
+            }
+            else{
+                tela.value = tela.value + v;
+            }
+
+            let operador = document.getElementById("operador")
+            operador.innerText = ""
+        }
+
+        function operacao(escolha) {
+            let tela = document.getElementById("tela")
+            numero1 = Number(tela.value)
+            if(numero2 != ""){
+                calcular();
+            }
+
+            tela.value = ""
+            let operador = document.getElementById("operador")
+            operador.innerText = escolha
+            sinalOperacao = escolha
+        }
+
+        function calcular(){
+            let resultadoConta = 0
+            numero2 = document.getElementById("tela").value
+            numero1 = Number(numero1)
+            numero2 = Number(numero2)
+
+            switch(sinalOperacao){
+                case("+"): 
+                    resultadoConta = numero1 + numero2;
+                    break;
+
+                case("-"): 
+                    resultadoConta = numero1 - numero2;
+                    break;
+
+                case("*"): 
+                    resultadoConta = numero1 * numero2;
+                    break;
+
+                case("/"): 
+                    resultadoConta = numero1 / numero2;
+                    break;
+                
+                default:
+                    resultadoConta = 0;
+            }
+
+            let tela = document.getElementById("tela")
+            tela.value = resultadoConta
+        }
+
+        function limpar(){
+            numero1 = 0
+            numero2 = 0
+            sinalOperacao = ""
+
+            document.getElementById("tela").value = 0
+            document.getElementById("operador").innerText = ""
+        }
+
+    </script>
+
+</body>
+</html>
